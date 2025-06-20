@@ -1,10 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1f2937;
+            background-color: #fff;
+        }
+        .header-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #a3bffa;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-link {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #1f2937;
+        }
+        .main-header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .app-store-btn {
+            background-color: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+        .app-store-btn img {
+            margin-right: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+        }
+        .app-store-btn:hover {
+            background-color: #333;
+        }
+        .phone-section {
+            position: relative;
+            min-height: 400px;
+            background-image: url('/images/pic1.png');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 2rem;
+        }
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            background-color: #fff;
+        }
+        .icon-card {
+            max-width: 200px;
+            text-align: center;
+            padding: 1rem;
+        }
+        .icon-image {
+            width: 2rem;
+            height: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .icon-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        .feature-section {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #fff;
+        }
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .feature-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        .single-phone {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            background-color: #e5e7eb;
+            padding: 2rem 0;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .phone-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            background-color: #d1d5db;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .phone-background {
+            width: 100%;
+            height: auto;
+        }
+        .phone-screen {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 90%;
+            height: 80%;
+            object-fit: cover;
+            transform: scale(0.8);
+        }
+        .task-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .checkbox {
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid #6b7280;
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .other-features {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+            background-color: #fff;
+        }
+        .other-card {
+            max-width: 180px;
+            text-align: center;
+            padding: 1rem;
+        }
+        .other-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .other-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+        .other-text {
+            font-size: 0.75rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        .device-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            background-color: #fff;
+        }
+        .device-image {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tablet-image {
+            width: 300px;
+            height: auto;
+        }
+        .phone-image-small {
+            width: 120px;
+            height: auto;
+        }
+        .watch-image {
+            width: 80px;
+            height: auto;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            background-color: #fff;
+            font-size: 0.75rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer-column {
+            flex: 1;
+        }
+        .footer-text {
+            margin: 0.25rem 0;
+        }
+        @media (max-width: 640px) {
+            .device-row, .icon-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tablet-image {
+                width: 200px;
+            }
+            .watch-image {
+                width: 60px;
+            }
+            .feature-section, .other-features, .task-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .single-phone {
+                width: 90%;
+            }
+            .phone-container {
+                max-width: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container mx-auto p-4">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center">
+            <span class="header-dot"></span>
+            <span class="header-dot"></span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">DOO FOR iOS</a>
+            <a href="#" class="nav-link">DOO FOR MAC</a>
+            <a href="#" class="nav-link">SUPPORT</a>
+            <a href="#" class="nav-link">DOWNLOAD</a>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="text-center">
+        <h1 class="main-header">Simplify your to-do list</h1>
+        <a href="#" class="app-store-btn">
+            <img src="/images/app-icon.png" alt="App Store" class="inline mr-2">
+            Download on the App Store
+        </a>
+        <div class="phone-section"></div>
+    </div>
+
+    <!-- Icon Row Section -->
+    <div class="icon-row">
+        <div class="icon-card">
+            <img src="/images/pic2.png" alt="Icon 1" class="icon-image">
+            <p class="icon-text">Create tasks with a clear, achievable goal.</p>
+        </div>
+        <div class="icon-card">
+            <img src="/images/pic3.png" alt="Icon 2" class="icon-image">
+            <p class="icon-text">Pick a few tasks each day and snooze the rest.</p>
+        </div>
+        <div class="icon-card">
+            <img src="/images/pic4.png" alt="Icon 3" class="icon-image">
+            <p class="icon-text">Build sustainable habits that feel invisible.</p>
+        </div>
+    </div>
+
+    <!-- Feature Section -->
+    <div class="feature-section">
+        <h2 class="feature-title">Designed with purpose</h2>
+        <p class="feature-text">Popular productivity apps have tagging, color coding, folders, and subfolders. They call it organization. We call it bloat. Doo is everything you need and nothing you don’t.</p>
+    </div>
+
+    <!-- Single Phone Sections -->
+    <div class="single-phone">
+        <div class="phone-container">
+            <img src="/images/phone-background.png" alt="Phone Background" class="phone-background">
+            <img src="/images/phone1.jpg" alt="Phone Screen Water" class="phone-screen">
+        </div>
+    </div>
+    <div class="single-phone">
+        <div class="phone-container">
+            <img src="/images/phone-background.png" alt="Phone Background" class="phone-background">
+            <img src="/images/phone2.jpg" alt="Phone Screen Pay" class="phone-screen">
+        </div>
+    </div>
+    <div class="single-phone">
+        <div class="phone-container">
+            <img src="/images/phone-background.png" alt="Phone Background" class="phone-background">
+            <img src="/images/phone1.jpg" alt="Phone Screen Water" class="phone-screen">
+        </div>
+    </div>
+    <div class="single-phone">
+        <div class="phone-container">
+            <img src="/images/phone-background.png" alt="Phone Background" class="phone-background">
+            <img src="/images/pic6.jpg" alt="Phone Screen Lock" class="phone-screen">
+        </div>
+    </div>
+
+    <!-- Other Features -->
+    <div class="other-features">
+        <div class="other-card">
+            <img src="/images/siri-icon.png" alt="Ask Icon" class="other-icon">
+            <p class="other-title">Ask Siri</p>
+            <p class="other-text">Use Siri to create tasks, a new list, or mark items completed.</p>
+        </div>
+        <div class="other-card">
+            <img src="/images/widget-icon.png" alt="Widget Icon" class="other-icon">
+            <p class="other-title">Widget</p>
+            <p class="other-text">Ready for iOS 14. View your most recently due task.</p>
+        </div>
+        <div class="other-card">
+            <img src="/images/collabor-icon.png" alt="Collaboration Icon" class="other-icon">
+            <p class="other-title">Task Collaboration</p>
+            <p class="other-text">Share reminders using iMessage, email, or any other text-based service.</p>
+        </div>
+        <div class="other-card">
+            <img src="/images/lock-icon.png" alt="Screen Icon" class="other-icon">
+            <p class="other-title">Screen Lock</p>
+            <p class="other-text">Keeps your data safe with Face ID or Touch ID.</p>
+        </div>
+        <div class="other-card">
+            <img src="/images/icloud-icon.png" alt="Sync Icon" class="other-icon">
+            <p class="other-title">Cloud Sync</p>
+            <p class="other-text">Changes sync to all devices running the app.</p>
+        </div>
+    </div>
+    <p class="text-center text-gray-600 text-sm mb-4">View all features</p>
+
+    <!-- Device Row with Single Tablet -->
+    <div class="text-center mt-8">
+        <img src="/images/tablet.jpg" alt="Tablet" class="tablet-image">
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-column">
+            <p class="footer-text">Model</p>
+            <p class="footer-text">Contact</p>
+            <p class="footer-text">Twitter</p>
+            <p class="footer-text">Instagram</p>
+            <p class="footer-text">Privacy Policy</p>
+        </div>
+        <div class="footer-column">
+            <p class="footer-text">App Store</p>
+            <p class="footer-text">appstore@example.com</p>
+        </div>
+        <div class="footer-column">
+            <p class="footer-text">Made with love in 2025 Todo Software</p>
+            <p class="footer-text">© Copyright 2025 Todo Software. All rights reserved.</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
